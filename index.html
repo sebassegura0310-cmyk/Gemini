@@ -1,230 +1,308 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#fff7ed">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#22143f" />
+  <title>Solicita tu crédito</title>
 
-  <title>Convocatoria Abierta</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  <link rel="stylesheet" href="style.css">
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, #a855f7 0, transparent 30%),
+        radial-gradient(circle at 90% 90%, #6d28d9 0, transparent 35%),
+        linear-gradient(135deg, #17112e, #3b1c68 55%, #241044);
+      position: relative;
+    }
+
+    /* BOTÓN FLOTANTE SUPERIOR IZQUIERDO DE REFERENCIAS CON DESTELLO Y PULSO */
+    .btn-referencias-izq {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.85), rgba(109, 40, 217, 0.85));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 50px;
+      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
+      overflow: hidden;
+      cursor: pointer;
+      animation: pulso-izq 2.5s infinite ease-in-out;
+      transition: all 0.3s ease;
+    }
+
+    /* Efecto de destello de luz cruzando el botón izquierdo */
+    .btn-referencias-izq::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.3) 50%,
+        transparent 65%
+      );
+      transform: rotate(30deg) translateX(-100%);
+      animation: destello-izq 3s infinite;
+    }
+
+    @keyframes destello-izq {
+      0% { transform: rotate(30deg) translateX(-100%); }
+      30%, 100% { transform: rotate(30deg) translateX(100%); }
+    }
+
+    @keyframes pulso-izq {
+      0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4); }
+      50% { transform: scale(1.03); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.65); }
+    }
+
+    .btn-referencias-izq:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .card {
+      width: min(100%, 560px);
+      padding: 42px 30px 28px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.09);
+      box-shadow: 0 24px 80px rgba(12, 5, 27, 0.4);
+      backdrop-filter: blur(16px);
+      animation: aparecer 700ms ease both;
+    }
+
+    .logo {
+      width: 112px;
+      height: 112px;
+      margin: 0 auto 24px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.14);
+      font-size: 48px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 8vw, 3.4rem);
+      letter-spacing: 0.08em;
+    }
+
+    .description {
+      margin: 0 auto 24px;
+      max-width: 440px;
+      color: #eee7fa;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* Banner en vivo de aprobaciones y solicitudes */
+    .aprobacion-live {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(0, 255, 136, 0.1);
+      border: 1px solid rgba(0, 255, 136, 0.25);
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      color: #e6fff2;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .aprobacion-live.oculto {
+      opacity: 0;
+      transform: translateY(-4px);
+    }
+
+    .monto-destacado {
+      color: #00ff88;
+      font-weight: 700;
+    }
+
+    .punto-verde {
+      width: 9px;
+      height: 9px;
+      background-color: #00ff88;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px #00ff88;
+      animation: pulso 1.5s infinite;
+    }
+
+    @keyframes pulso {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    }
+
+    .buttons {
+      display: grid;
+      gap: 14px;
+    }
+
+    .button {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      padding: 17px 20px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 15px;
+      color: #fff;
+      background: linear-gradient(100deg, #a855f7, #7c3aed, #6d28d9);
+      background-size: 200% 200%;
+      box-shadow: 0 10px 26px rgba(109, 40, 217, 0.35);
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+      animation: brillo 5s ease infinite;
+    }
+
+    .button:hover {
+      transform: translateY(-3px) scale(1.01);
+      box-shadow: 0 15px 32px rgba(168, 85, 247, 0.45);
+    }
+
+    .button:active {
+      transform: scale(0.98);
+    }
+
+    .button:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 4px;
+    }
+
+    footer {
+      margin-top: 26px;
+      color: #d8c9ef;
+      font-size: 0.85rem;
+    }
+
+    @keyframes brillo {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes aparecer {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <main class="page">
+  <!-- BOTÓN SUPERIOR IZQUIERDO DE REFERENCIAS -->
+  <a href="referencias.html" class="btn-referencias-izq">
+    <span>⭐</span> Referencias
+  </a>
 
-    <!-- PANTALLA DE BIENVENIDA -->
-    <section id="welcomeScreen" class="welcome-screen">
+  <main class="card">
+    <div class="logo" aria-hidden="true">💸</div>
 
-      <div class="welcome-card">
+    <h1>CRÉDITOS</h1>
 
-        <div class="welcome-header">
-          Convocatoria Abierta<br>
-          Participación en Estudios de Mercado
-        </div>
+    <p class="description">
+Solicita tu crédito sin ningún tipo de inicial o anticipado, Dale click al botón SOLICITAR en cualquier de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!.
+    </p>
 
-        <div class="welcome-content">
-
-          <p class="welcome-description">
-            🔥 Buscamos 25 personas interesadas en participar
-            en estudios de mercado remunerados. La participación
-            es remota y puede realizarse desde cualquier lugar
-            con acceso a internet.
-          </p>
-
-          <div class="welcome-benefits">
-            <p>• Flexible: 2 - 4 horas/día.</p>
-            <p>• Compensación semanal.</p>
-            <p>• Sin ventas ni llamadas.</p>
-            <p>• Marcas líderes.</p>
-          </div>
-
-          <p class="welcome-text">
-            Haz clic en "Continuar", responde unas preguntas
-            y en menos de 5 minutos estás dentro! 😉
-          </p>
-
-          <button id="continueButton" class="primary-button">
-            📲 CONTINUAR
-          </button>
-
-        </div>
-      </div>
-
-    </section>
-
-
-    <!-- CUESTIONARIO -->
-    <section id="quizScreen" class="quiz-screen" hidden>
-
-      <header class="hero">
-
-        <div class="availability">
-          🔥 25 PLAZAS DISPONIBLES
-        </div>
-
-        <h1>
-          ¿Eres <span>proactivo</span> y con ganas de trabajar?
-        </h1>
-
-        <p class="lead">
-          Seleccionamos 25 personas para tareas sencillas
-        </p>
-
-        <p class="sublead">
-          Responde este breve cuestionario y descubre qué perfil
-          encaja mejor contigo.
-        </p>
-
-      </header>
-
-
-      <div class="activity">
-
-  <div class="activity-dot"></div>
-
-  <p>
-    <strong id="activityName">Ana</strong>
-    <span>Fue</span><br>
-    <span>seleccionada hace: </span>
-    <strong id="activityTime">15 min</strong>
-  </p>
-
-  <div class="activity-pill">
-    +🔴 14 seleccionados hoy 
-  </div>
-
-</div>
-
-
-      <section class="quiz-card">
-
-        <div class="progress">
-          <div class="progress-step active"></div>
-          <div class="progress-step"></div>
-          <div class="progress-step"></div>
-        </div>
-
-        <div class="step-label" id="stepLabel">
-          PASO 1 DE 3
-        </div>
-
-        <h2 id="questionTitle">
-          ¿Cuál es tu rango de edad?
-        </h2>
-
-        <p class="question-hint" id="questionHint"></p>
-
-        <form id="quizForm">
-
-          <div class="options" id="options"></div>
-
-          <p class="error" id="quizError" aria-live="polite"></p>
-
-          <div class="actions">
-
-            <button
-              type="button"
-              id="backButton"
-              class="back-button"
-              hidden>
-              ← VOLVER
-            </button>
-
-            <button
-              type="submit"
-              id="nextButton"
-              class="primary-button"
-              disabled>
-              SIGUIENTE →
-            </button>
-
-          </div>
-
-        </form>
-
-      </section>
-
-      <p class="privacy-note">
-        * Tus respuestas nos ayudan a encontrar el mejor perfil para ti.
-      </p>
-
-    </section>
-
-  </main>
-
-
-  <!-- ANIMACIÓN DE CARGA -->
-  <div
-    id="loader"
-    class="loader-overlay"
-    aria-hidden="true">
-
-    <div class="loader-box">
-      <div class="spinner"></div>
-      <strong>Un momento, por favor...</strong>
-      <span>Estamos avanzando al siguiente paso.</span>
+    <!-- Notificación animada en tiempo real -->
+    <div class="aprobacion-live" id="bannerAprobacion">
+      <span class="punto-verde"></span>
+      <span id="textoAprobacion"><strong>María G.</strong> envió una solicitud por <span class="monto-destacado">$4,500 MXN</span> hace 1 minuto</span>
     </div>
 
-  </div>
+    <nav class="buttons" aria-label="Opciones para solicitar">
+      <!-- Cambia cada URL por tu enlace -->
+      <a class="button" href="https://o.uvixs.com//tr?offer_id=7&aff_id=14"
+         target="_blank" rel="noopener noreferrer">
+        SOLICITAR #1
+      </a>
 
+      <a class="button" href="https://o.uvixs.com//tr?offer_id=10&aff_id=14"
+         target="_blank" rel="noopener noreferrer">
+        SOLICITAR #2
+      </a>
+    </nav>
 
-  <!-- RESULTADO FINAL -->
-  <div
-    id="resultModal"
-    class="modal-overlay"
-    aria-hidden="true">
+    <footer>
+      🔒 Proceso 100% seguro y sin pagos previos.
+    </footer>
+  </main>
 
-    <section
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="resultTitle">
+  <script>
+    const actividades = [
+      { texto: "envió una solicitud por", nombre: "Mariana H.", monto: "$2,700 MXN", tiempo: "hace 1 minuto" },
+      { texto: "fue aprobado por", nombre: "Rodolfo R.", monto: "$2,000 MXN", tiempo: "hace unos segundos" },
+      { texto: "inició su trámite por", nombre: "Francisco G.", monto: "$5,000 MXN", tiempo: "hace 3 minutos" },
+      { texto: "recibió su crédito de", nombre: "Amanda D.", monto: "$2,500 MXN", tiempo: "hace 2 minutos" },
+      { texto: "envió una solicitud por", nombre: "Keyla T.", monto: "$3,000 MXN", tiempo: "hace 30 segundos" },
+      { texto: "fue aprobado por", nombre: "Alex H.", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
+      { texto: "completó su registro por", nombre: "Alberto P.", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
+      { texto: "envió una solicitud por", nombre: "Martina Z.", monto: "$1,700 MXN", tiempo: "hace 7 minuto" },
+      { texto: "fue aprobado por", nombre: "Carolina M.", monto: "$5,000 MXN", tiempo: "hace unos segundos" },
+      { texto: "inició su trámite por", nombre: "Diana G.", monto: "$2,000 MXN", tiempo: "hace 3 minutos" },
+      { texto: "recibió su crédito de", nombre: "Jairo K.", monto: "$3,500 MXN", tiempo: "hace 6 minutos" },
+      { texto: "envió una solicitud por", nombre: "Paula S.", monto: "$4,500 MXN", tiempo: "hace 42 segundos" },
+      { texto: "fue aprobada por", nombre: "Lina T.", monto: "$2,000 MXN", tiempo: "hace 6 minutos" },
+      { texto: "completó su registro por", nombre: "Marcelo C.", monto: "$3,000 MXN", tiempo: "hace 9 minutos" },
+      { texto: "recibió su crédito de", nombre: "Elver G.", monto: "$2,700 MXN", tiempo: "hace 5 minutos" }
+    ];
 
-      <div class="success-icon">✓</div>
+    let indice = 0;
+    const banner = document.getElementById("bannerAprobacion");
+    const texto = document.getElementById("textoAprobacion");
 
-      <h2 id="resultTitle">¡Felicidades!</h2>
+    setInterval(() => {
+      banner.classList.add("oculto");
 
-      <p class="result-copy">
-        Aplicas para <strong>Evaluador de Productos.</strong>
-      </p>
-
-      <p class="result-copy">
-        Grandes marcas te pagarán hasta
-        <strong class="green-text">
-          9€ por encuesta completada.
-        </strong>
-      </p>
-
-      <div class="result-benefit">
-        ✅ Sin experiencia
-      </div>
-
-      <div class="result-benefit">
-        ⏱️ A tu ritmo
-      </div>
-
-      <div class="notice">
-        📌 <strong>Regístrate solo si estás interesado</strong>
-        en generar ingresos extras desde casa.
-        Las plazas son limitadas.
-      </div>
-
-      <button
-        type="button"
-        id="finalButton"
-        class="primary-button">
-        🟠 ¡Comenzar ahora!
-      </button>
-
-    </section>
-
-  </div>
-
-
-  <script src="script.js"></script>
-
+      setTimeout(() => {
+        indice = (indice + 1) % actividades.length;
+        const item = actividades[indice];
+        texto.innerHTML = `<strong>${item.nombre}</strong> ${item.texto} <span class="monto-destacado">${item.monto}</span> ${item.tiempo}`;
+        
+        banner.classList.remove("oculto");
+      }, 600);
+    }, 8000);
+  </script>
 </body>
 </html>
