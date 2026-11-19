@@ -3,306 +3,503 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#22143f" />
-  <title>Solicita tu crédito</title>
-
+  <title>Portal de Créditos y Préstamos - Continuar en Chrome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     body {
       min-height: 100vh;
-      margin: 0;
-      padding: 40px 20px;
-      display: grid;
-      place-items: center;
-      color: #fff;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 15% 10%, #a855f7 0, transparent 30%),
-        radial-gradient(circle at 90% 90%, #6d28d9 0, transparent 35%),
-        linear-gradient(135deg, #17112e, #3b1c68 55%, #241044);
-      position: relative;
-    }
-
-    /* BOTÓN FLOTANTE SUPERIOR IZQUIERDO DE REFERENCIAS CON DESTELLO Y PULSO */
-    .btn-referencias-izq {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      display: inline-flex;
+      background-color: #F4F5F7;
+      color: #1A1A1A;
+      display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.85), rgba(109, 40, 217, 0.85));
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      border-radius: 50px;
-      box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4);
-      overflow: hidden;
-      cursor: pointer;
-      animation: pulso-izq 2.5s infinite ease-in-out;
-      transition: all 0.3s ease;
+      padding: 0 0 28px 0;
     }
 
-    /* Efecto de destello de luz cruzando el botón izquierdo */
-    .btn-referencias-izq::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(
-        60deg,
-        transparent 35%,
-        rgba(255, 255, 255, 0.3) 50%,
-        transparent 65%
-      );
-      transform: rotate(30deg) translateX(-100%);
-      animation: destello-izq 3s infinite;
-    }
-
-    @keyframes destello-izq {
-      0% { transform: rotate(30deg) translateX(-100%); }
-      30%, 100% { transform: rotate(30deg) translateX(100%); }
-    }
-
-    @keyframes pulso-izq {
-      0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4); }
-      50% { transform: scale(1.03); box-shadow: 0 10px 25px rgba(168, 85, 247, 0.65); }
-    }
-
-    .btn-referencias-izq:hover {
-      transform: translateY(-2px);
-      opacity: 0.95;
-    }
-
-    .card {
-      width: min(100%, 560px);
-      padding: 42px 30px 28px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 28px;
-      background: rgba(255, 255, 255, 0.09);
-      box-shadow: 0 24px 80px rgba(12, 5, 27, 0.4);
-      backdrop-filter: blur(16px);
-      animation: aparecer 700ms ease both;
-    }
-
-    .logo {
-      width: 112px;
-      height: 112px;
-      margin: 0 auto 24px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255, 255, 255, 0.24);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.14);
-      font-size: 48px;
-    }
-
-    h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.2rem, 8vw, 3.4rem);
-      letter-spacing: 0.08em;
-    }
-
-    .description {
-      margin: 0 auto 24px;
-      max-width: 440px;
-      color: #eee7fa;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
-
-    /* Banner en vivo de aprobaciones y solicitudes */
-    .aprobacion-live {
+    /* Barra superior corporativa estilo Santander */
+    .brand-header {
+      width: 100%;
+      background-color: #EC0000;
+      color: #FFFFFF;
+      padding: 14px 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      background: rgba(0, 255, 136, 0.1);
-      border: 1px solid rgba(0, 255, 136, 0.25);
-      padding: 12px 14px;
-      border-radius: 12px;
-      margin-bottom: 24px;
-      font-size: 0.9rem;
-      line-height: 1.4;
-      color: #e6fff2;
+      box-shadow: 0 2px 10px rgba(236, 0, 0, 0.22);
+    }
+
+    .brand-title {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+    }
+
+    /* Contenedor centrado */
+    .wrapper {
+      width: 100%;
+      max-width: 440px;
+      padding: 18px 16px 0 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Barra sutil de actividad en vivo */
+    .live-banner {
+      background: #FFFFFF;
+      border: 1px solid #E2E5EC;
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 12.5px;
+      color: #4A5568;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      width: 100%;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
       transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
-    .aprobacion-live.oculto {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
-
-    .monto-destacado {
-      color: #00ff88;
-      font-weight: 700;
-    }
-
-    .punto-verde {
-      width: 9px;
-      height: 9px;
-      background-color: #00ff88;
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #16A34A;
       border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.18);
       flex-shrink: 0;
-      box-shadow: 0 0 8px #00ff88;
-      animation: pulso 1.5s infinite;
+      animation: pulseDot 1.8s infinite;
     }
 
-    @keyframes pulso {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0.7); }
-      70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(0, 255, 136, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.7; }
     }
 
-    .buttons {
-      display: grid;
-      gap: 14px;
+    /* Tarjeta principal blanca limpia */
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-top: 4px solid #EC0000;
+      border-radius: 18px;
+      padding: 26px 22px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      text-align: center;
     }
 
-    .button {
-      position: relative;
+    /* Aviso de bloqueo de navegador */
+    .alert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FFF4F4;
+      border: 1px solid #FECACA;
+      color: #B91C1C;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.28;
+      margin-bottom: 10px;
+      color: #1A1A1A;
+      letter-spacing: -0.3px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #4B5563;
+      line-height: 1.55;
+      margin-bottom: 22px;
+    }
+
+    .subtitle strong {
+      color: #1A1A1A;
+    }
+
+    /* Caja del enlace */
+    .link-box {
+      background: #F4F5F7;
+      border: 1px solid #D1D5DB;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .link-box:hover {
+      border-color: #EC0000;
+      background: #FAFAFB;
+    }
+
+    .link-text {
+      font-size: 13px;
+      color: #1A1A1A;
+      font-weight: 600;
+      white-space: nowrap;
       overflow: hidden;
-      display: block;
-      padding: 17px 20px;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 15px;
-      color: #fff;
-      background: linear-gradient(100deg, #a855f7, #7c3aed, #6d28d9);
-      background-size: 200% 200%;
-      box-shadow: 0 10px 26px rgba(109, 40, 217, 0.35);
-      font-size: 1rem;
+      text-overflow: ellipsis;
+      user-select: all;
+    }
+
+    .lock-tag {
+      font-size: 11px;
+      background: #DCFCE7;
+      color: #15803D;
+      padding: 4px 8px;
+      border-radius: 6px;
       font-weight: 700;
-      text-decoration: none;
-      transition: transform 180ms ease, box-shadow 180ms ease;
-      animation: brillo 5s ease infinite;
+      flex-shrink: 0;
     }
 
-    .button:hover {
-      transform: translateY(-3px) scale(1.01);
-      box-shadow: 0 15px 32px rgba(168, 85, 247, 0.45);
+    /* Botón principal rojo Santander animado */
+    .btn-copy {
+      width: 100%;
+      border: none;
+      border-radius: 14px;
+      padding: 17px 20px;
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #FFFFFF;
+      cursor: pointer;
+      background: linear-gradient(90deg, #CC0000, #EC0000, #FF1A1A, #EC0000);
+      background-size: 250% 100%;
+      animation: redPulse 3.5s ease infinite;
+      box-shadow: 0 8px 20px rgba(236, 0, 0, 0.28);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.16s ease, box-shadow 0.2s ease, background 0.3s ease;
     }
 
-    .button:active {
+    .btn-copy:active {
       transform: scale(0.98);
     }
 
-    .button:focus-visible {
-      outline: 3px solid #fff;
-      outline-offset: 4px;
+    .btn-copy.copied {
+      background: #16A34A;
+      animation: none;
+      box-shadow: 0 8px 20px rgba(22, 163, 74, 0.28);
     }
 
-    footer {
-      margin-top: 26px;
-      color: #d8c9ef;
-      font-size: 0.85rem;
-    }
-
-    @keyframes brillo {
-      0%, 100% { background-position: 0% 50%; }
+    @keyframes redPulse {
+      0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
-    @keyframes aparecer {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* Botón secundario para intentar abrir Chrome directo */
+    .btn-chrome {
+      margin-top: 12px;
+      width: 100%;
+      background: #FFFFFF;
+      border: 1.5px solid #D1D5DB;
+      color: #1A1A1A;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: border-color 0.2s ease, background 0.2s ease;
+      text-decoration: none;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-      }
+    .btn-chrome:hover {
+      border-color: #9CA3AF;
+      background: #F9FAFB;
+    }
+
+    /* Guía visual de 3 pasos */
+    .steps-container {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #E5E7EB;
+      text-align: left;
+    }
+
+    .steps-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #6B7280;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+      background: #F4F5F7;
+      padding: 11px 13px;
+      border-radius: 12px;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #EC0000;
+      color: #FFFFFF;
+      font-size: 12.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .step-text {
+      font-size: 13.5px;
+      color: #374151;
+      line-height: 1.42;
+    }
+
+    .step-text strong {
+      color: #1A1A1A;
+    }
+
+    /* Pie de seguridad */
+    .trust-footer {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid #F3F4F6;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #6B7280;
+    }
+
+    /* Notificación flotante (Toast) */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #1A1A1A;
+      color: #FFFFFF;
+      border-left: 4px solid #22C55E;
+      padding: 13px 20px;
+      border-radius: 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 999;
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
   </style>
 </head>
-
 <body>
 
-  <!-- BOTÓN SUPERIOR IZQUIERDO DE REFERENCIAS -->
-  <a href="referencias.html" class="btn-referencias-izq">
-    <span>⭐</span> Referencias
-  </a>
+  <!-- Barra superior corporativa -->
+  <header class="brand-header">
+    <!-- Emblema geométrico estilo flama en blanco -->
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+      <path d="M16.8 3C16.8 7.5 12.2 10.2 12.2 14.5C12.2 16.9 13.9 18.8 16.2 19.3C14.7 17.6 14.6 15.2 16.4 13.2C18.3 11.1 20.5 9.2 19.6 5.4C22.4 7.7 23.6 11.3 22.2 14.8C21.3 17.1 19.2 18.7 19.2 21.1C22.9 20.1 26 16.9 26 12.8C28.4 15.2 29 19.2 27.1 22.8C24.8 27 19.8 29 15.1 29C9.3 29 4.5 24.6 4.5 18.9C4.5 13.8 8.4 10.3 12.1 7.3C14.1 5.7 15.7 4.3 16.8 3Z" fill="#FFFFFF"/>
+    </svg>
+    <span class="brand-title">Portal de Créditos y Préstamos</span>
+  </header>
 
-  <main class="card">
-    <div class="logo" aria-hidden="true">💸</div>
-
-    <h1>CRÉDITOS</h1>
-
-    <p class="description">
-Solicita tu crédito sin ningún tipo de inicial o anticipado, Dale click al botón SOLICITAR en cualquier de las dos opciones, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!.
-    </p>
-
-    <!-- Notificación animada en tiempo real -->
-    <div class="aprobacion-live" id="bannerAprobacion">
-      <span class="punto-verde"></span>
-      <span id="textoAprobacion"><strong>María G.</strong> envió una solicitud por <span class="monto-destacado">$4,500 MXN</span> hace 1 minuto</span>
+  <div class="wrapper">
+    <!-- Barra de actividad en vivo -->
+    <div class="live-banner" id="liveBanner">
+      <span class="live-dot"></span>
+      <span id="liveText">Camila M. abrió su solicitud en Chrome hace 1 min</span>
     </div>
 
-    <nav class="buttons" aria-label="Opciones para solicitar">
-      <!-- Cambia cada URL por tu enlace -->
-      <a class="button" href="https://o.uvixs.com//tr?offer_id=7&aff_id=14"
-         target="_blank" rel="noopener noreferrer">
-        SOLICITAR #1
+    <!-- Tarjeta Principal -->
+    <main class="card">
+      <div class="alert-badge">
+        ⚠️ Navegador de Facebook / Messenger detectado
+      </div>
+
+      <h1>Continúa tu solicitud de préstamo en Google Chrome</h1>
+      <p class="subtitle">
+        Por políticas de seguridad bancaria, el navegador interno de esta aplicación restringe el formulario. Copia tu enlace verificado y ábrelo en <strong>Google Chrome</strong> o <strong>Safari</strong>.
+      </p>
+
+      <!-- Caja del enlace de solo lectura -->
+      <div class="link-box" onclick="copiarEnlace()" title="Toca para copiar el enlace">
+        <span class="link-text" id="displayLink">Cargando enlace seguro...</span>
+        <span class="lock-tag">🔒 SSL</span>
+      </div>
+
+      <!-- Botón principal rojo Santander -->
+      <button class="btn-copy" id="copyBtn" onclick="copiarEnlace()">
+        <span id="btnIcon">📋</span>
+        <span id="btnLabel">COPIAR ENLACE AHORA</span>
+      </button>
+
+      <!-- Botón secundario para intentar abrir Chrome directo en Android -->
+      <a href="#" class="btn-chrome" id="chromeDirectBtn" onclick="abrirEnChrome(event)">
+        🌐 Intentar abrir directo en Chrome
       </a>
 
-      <a class="button" href="https://o.uvixs.com//tr?offer_id=10&aff_id=14"
-         target="_blank" rel="noopener noreferrer">
-        SOLICITAR #2
-      </a>
-    </nav>
+      <!-- Guía visual de 3 pasos -->
+      <div class="steps-container">
+        <div class="steps-title">Sigue estos 3 pasos para continuar</div>
 
-    <footer>
-      🔒 Proceso 100% seguro y sin pagos previos.
-    </footer>
-  </main>
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">Toca el botón rojo <strong>"COPIAR ENLACE AHORA"</strong> de arriba.</div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">Sal de Messenger y abre <strong>Google Chrome</strong> (o Safari en iPhone).</div>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Pega el enlace</strong> en la barra de direcciones y completa tu solicitud.</div>
+        </div>
+      </div>
+
+      <!-- Insignias de seguridad -->
+      <div class="trust-footer">
+        <span>🛡️ Conexión cifrada 256-bit</span>
+        <span>✓ Enlace verificado</span>
+      </div>
+    </main>
+  </div>
+
+  <!-- Notificación flotante (Toast) -->
+  <div class="toast" id="toast">✅ ¡Enlace copiado! Pégalo en Google Chrome</div>
 
   <script>
-    const actividades = [
-      { texto: "envió una solicitud por", nombre: "Mariana H.", monto: "$2,700 MXN", tiempo: "hace 1 minuto" },
-      { texto: "fue aprobado por", nombre: "Rodolfo R.", monto: "$2,000 MXN", tiempo: "hace unos segundos" },
-      { texto: "inició su trámite por", nombre: "Francisco G.", monto: "$5,000 MXN", tiempo: "hace 3 minutos" },
-      { texto: "recibió su crédito de", nombre: "Amanda D.", monto: "$2,500 MXN", tiempo: "hace 2 minutos" },
-      { texto: "envió una solicitud por", nombre: "Keyla T.", monto: "$3,000 MXN", tiempo: "hace 30 segundos" },
-      { texto: "fue aprobado por", nombre: "Alex H.", monto: "$6,000 MXN", tiempo: "hace 4 minutos" },
-      { texto: "completó su registro por", nombre: "Alberto P.", monto: "$4,000 MXN", tiempo: "hace 2 minutos" },
-      { texto: "envió una solicitud por", nombre: "Martina Z.", monto: "$1,700 MXN", tiempo: "hace 7 minuto" },
-      { texto: "fue aprobado por", nombre: "Carolina M.", monto: "$5,000 MXN", tiempo: "hace unos segundos" },
-      { texto: "inició su trámite por", nombre: "Diana G.", monto: "$2,000 MXN", tiempo: "hace 3 minutos" },
-      { texto: "recibió su crédito de", nombre: "Jairo K.", monto: "$3,500 MXN", tiempo: "hace 6 minutos" },
-      { texto: "envió una solicitud por", nombre: "Paula S.", monto: "$4,500 MXN", tiempo: "hace 42 segundos" },
-      { texto: "fue aprobada por", nombre: "Lina T.", monto: "$2,000 MXN", tiempo: "hace 6 minutos" },
-      { texto: "completó su registro por", nombre: "Marcelo C.", monto: "$3,000 MXN", tiempo: "hace 9 minutos" },
-      { texto: "recibió su crédito de", nombre: "Elver G.", monto: "$2,700 MXN", tiempo: "hace 5 minutos" }
-    ];
+    // =========================================================================
+    // 👇 PEGA AQUÍ EL ENLACE DE TU OFERTA DE PRÉSTAMOS 👇
+    // =========================================================================
+    const ENLACE_DESTINO = "https://o.uvixs.com/tu-enlace-aqui";
+    // =========================================================================
 
-    let indice = 0;
-    const banner = document.getElementById("bannerAprobacion");
-    const texto = document.getElementById("textoAprobacion");
+    document.getElementById("displayLink").textContent = ENLACE_DESTINO;
 
-    setInterval(() => {
-      banner.classList.add("oculto");
+    // Función principal para copiar al portapapeles con respaldo universal
+    function copiarEnlace() {
+      const tempInput = document.createElement("textarea");
+      tempInput.value = ENLACE_DESTINO;
+      tempInput.style.position = "fixed";
+      tempInput.style.opacity = "0";
+      document.body.appendChild(tempInput);
+      tempInput.focus();
+      tempInput.select();
+
+      let copiado = false;
+      try {
+        copiado = document.execCommand("copy");
+      } catch (err) {
+        copiado = false;
+      }
+      document.body.removeChild(tempInput);
+
+      if (copiado) {
+        activarConfirmacion();
+      } else if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(ENLACE_DESTINO)
+          .then(() => activarConfirmacion())
+          .catch(() => activarConfirmacion());
+      } else {
+        activarConfirmacion();
+      }
+    }
+
+    function activarConfirmacion() {
+      const btn = document.getElementById("copyBtn");
+      const icon = document.getElementById("btnIcon");
+      const label = document.getElementById("btnLabel");
+      const toast = document.getElementById("toast");
+
+      btn.classList.add("copied");
+      icon.textContent = "✅";
+      label.textContent = "¡ENLACE COPIADO! ABRE CHROME";
+      toast.classList.add("show");
 
       setTimeout(() => {
-        indice = (indice + 1) % actividades.length;
-        const item = actividades[indice];
-        texto.innerHTML = `<strong>${item.nombre}</strong> ${item.texto} <span class="monto-destacado">${item.monto}</span> ${item.tiempo}`;
-        
-        banner.classList.remove("oculto");
-      }, 600);
-    }, 8000);
+        toast.classList.remove("show");
+      }, 3800);
+
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        icon.textContent = "📋";
+        label.textContent = "COPIAR ENLACE AHORA";
+      }, 4500);
+    }
+
+    // Intenta forzar apertura directa en Chrome en Android y copia el enlace por respaldo
+    function abrirEnChrome(e) {
+      e.preventDefault();
+      copiarEnlace();
+      const urlSinProtocolo = ENLACE_DESTINO.replace(/^https?:\/\//, "");
+      const intentUrl = `intent://${urlSinProtocolo}#Intent;scheme=https;package=com.android.chrome;end`;
+      window.location.href = intentUrl;
+    }
+
+    // Rotación suave de notificaciones en vivo
+    const mensajes = [
+      "Camila M. abrió su solicitud en Chrome hace 1 min",
+      "Andrés R. continuó su evaluación de crédito hace 2 min",
+      "Valentina G. ingresó desde Google Chrome hace 3 min",
+      "Carlos D. completó su solicitud en línea hace 4 min"
+    ];
+    let indice = 0;
+    const banner = document.getElementById("liveBanner");
+    const liveText = document.getElementById("liveText");
+
+    setInterval(() => {
+      banner.style.opacity = "0";
+      banner.style.transform = "translateY(-4px)";
+      setTimeout(() => {
+        indice = (indice + 1) % mensajes.length;
+        liveText.textContent = mensajes[indice];
+        banner.style.opacity = "1";
+        banner.style.transform = "translateY(0)";
+      }, 400);
+    }, 4500);
   </script>
 </body>
 </html>
