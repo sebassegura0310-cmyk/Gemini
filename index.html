@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Tiempo Limitado - Solicita tu Crédito</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -15,124 +12,106 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      min-height: 100vh;
-      /* Degradado rojo intenso arriba hacia rojo vino oscuro abajo */
-      background: radial-gradient(circle at 50% 15%, #ff1a1a 0%, #c80000 38%, #6e0000 78%, #360000 100%);
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: #8a0000;
+      background-image: linear-gradient(180deg, #ff1a1a 0%, #c80000 38%, #6e0000 78%, #360000 100%);
       color: #ffffff;
+      text-align: center;
+    }
+
+    body {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      padding: 36px 22px 22px;
-      text-align: center;
-      overflow-x: hidden;
+      min-height: 100vh;
+      padding: 36px 20px 24px;
     }
 
     .container {
       width: 100%;
-      max-width: 410px;
+      max-width: 400px;
+      margin: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin: auto 0;
     }
 
-    /* Círculo blanco superior con ícono de mano y monedas verdes */
+    /* Círculo blanco superior con ícono */
     .logo-circle {
-      width: 138px;
-      height: 138px;
-      background: #ffffff;
+      width: 132px;
+      height: 132px;
+      background-color: #ffffff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 34px;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.38);
-      animation: floatLogo 3.5s ease-in-out infinite;
+      margin: 0 auto 30px auto;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
     }
 
-    .logo-circle svg {
-      width: 92px;
-      height: 92px;
-    }
-
-    /* Título TIEMPO LIMITADO con rayos */
     .title {
-      font-size: 2.35rem;
-      font-weight: 500;
+      font-size: 2.2rem;
+      font-weight: 700;
       line-height: 1.15;
       letter-spacing: 0.02em;
       text-transform: uppercase;
       color: #ffffff;
-      margin-bottom: 20px;
-      text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+      margin-bottom: 18px;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
     }
 
-    .bolt {
-      display: inline-block;
-      filter: drop-shadow(0 2px 6px rgba(250, 204, 21, 0.45));
-    }
-
-    /* Párrafo descriptivo */
     .description {
-      font-size: 1.08rem;
+      font-size: 1.05rem;
       font-weight: 400;
       line-height: 1.48;
-      color: #f8f8f8;
-      margin-bottom: 34px;
+      color: #ffffff;
+      margin-bottom: 32px;
       padding: 0 4px;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
     }
 
     /* Botón Principal SOLICITAR */
     .btn-solicitar {
+      display: block;
       width: 100%;
-      max-width: 360px;
-      background: linear-gradient(180deg, #ffffff 0%, #dcdcdc 100%);
+      max-width: 350px;
+      background: #eeeeee;
+      background-image: linear-gradient(180deg, #ffffff 0%, #d8d8d8 100%);
       color: #111111;
       border: none;
-      border-radius: 999px;
-      padding: 20px 24px;
-      font-family: inherit;
-      font-size: 1.25rem;
-      font-weight: 600;
+      border-radius: 50px;
+      padding: 19px 24px;
+      font-size: 1.2rem;
+      font-weight: 700;
       letter-spacing: 0.03em;
       text-transform: uppercase;
       cursor: pointer;
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45), inset 0 2px 2px rgba(255, 255, 255, 0.9);
-      transition: transform 0.14s ease, box-shadow 0.2s ease;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
       margin-bottom: 14px;
     }
 
     .btn-solicitar:active {
       transform: scale(0.96);
-      box-shadow: 0 5px 14px rgba(0, 0, 0, 0.5);
     }
 
-    /* Botón REFERENCIAS justo debajo de SOLICITAR */
+    /* Botón REFERENCIAS */
     .btn-referencias {
+      display: block;
       width: 100%;
-      max-width: 360px;
-      background: rgba(255, 255, 255, 0.12);
+      max-width: 350px;
+      background-color: rgba(255, 255, 255, 0.14);
       color: #ffffff;
-      border: 1.5px solid rgba(255, 255, 255, 0.45);
-      border-radius: 999px;
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50px;
       padding: 15px 24px;
-      font-family: inherit;
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 600;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       cursor: pointer;
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      transition: transform 0.14s ease, background 0.2s ease;
-    }
-
-    .btn-referencias:hover {
-      background: rgba(255, 255, 255, 0.2);
     }
 
     .btn-referencias:active {
@@ -142,26 +121,22 @@
     .footer-register {
       margin-top: 28px;
       font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.28);
-      letter-spacing: 0.02em;
-      user-select: none;
+      color: rgba(255, 255, 255, 0.3);
     }
 
-    /* =======================================================
-       AVISO DE GOOGLE CHROME / SAFARI (ESTILO CAPTURA 2 EN ROJO)
-       ======================================================= */
+    /* MODALES */
     .modal-overlay {
       position: fixed;
-      inset: 0;
-      background: rgba(14, 2, 2, 0.88);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(12, 2, 2, 0.9);
       display: none;
       align-items: center;
       justify-content: center;
       padding: 16px;
-      z-index: 999;
-      animation: fadeIn 0.22s ease;
+      z-index: 9999;
     }
 
     .modal-overlay.active {
@@ -170,332 +145,224 @@
 
     .google-card {
       width: 100%;
-      max-width: 380px;
-      background: linear-gradient(180deg, #3b0808 0%, #240404 100%);
-      border: 1px solid rgba(255, 110, 110, 0.25);
-      border-radius: 26px;
-      padding: 46px 20px 22px;
-      box-shadow: 0 26px 65px rgba(0, 0, 0, 0.85);
+      max-width: 375px;
+      background-color: #2c0505;
+      background-image: linear-gradient(180deg, #3e0808 0%, #220303 100%);
+      border: 1px solid rgba(255, 110, 110, 0.3);
+      border-radius: 24px;
+      padding: 44px 18px 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.85);
       text-align: center;
       color: #ffffff;
       position: relative;
-      animation: popUp 0.25s ease;
     }
 
-    /* Botón X circular en esquina superior derecha */
     .google-close-btn {
       position: absolute;
-      top: 14px;
-      right: 14px;
+      top: 12px;
+      right: 12px;
       width: 34px;
       height: 34px;
       border-radius: 50%;
       border: none;
-      background: rgba(255, 255, 255, 0.14);
-      color: #e5e5e5;
+      background-color: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
       font-size: 1rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s ease;
     }
 
-    .google-close-btn:active {
-      background: rgba(255, 255, 255, 0.25);
-    }
-
-    /* Píldora superior de enlace copiado automáticamente */
     .copied-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      background: rgba(22, 101, 52, 0.42);
-      border: 1px solid rgba(74, 222, 128, 0.4);
+      display: inline-block;
+      background-color: rgba(22, 101, 52, 0.5);
+      border: 1px solid rgba(74, 222, 128, 0.45);
       color: #bbf7d0;
       font-size: 0.78rem;
       font-weight: 600;
       padding: 6px 14px;
-      border-radius: 999px;
-      margin-bottom: 16px;
-    }
-
-    .copied-check {
-      background: #22c55e;
-      color: #ffffff;
-      font-size: 0.68rem;
-      font-weight: 800;
-      width: 16px;
-      height: 16px;
-      border-radius: 4px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      border-radius: 50px;
+      margin-bottom: 14px;
     }
 
     .google-title {
-      font-size: 1.38rem;
+      font-size: 1.32rem;
       font-weight: 700;
       line-height: 1.25;
       color: #ffffff;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .google-desc {
-      font-size: 0.88rem;
-      line-height: 1.48;
-      color: #e5cfcf;
-      margin-bottom: 18px;
-      padding: 0 4px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: #ead4d4;
+      margin-bottom: 16px;
     }
 
-    /* Caja oscura con la URL visible */
     .url-display-box {
       width: 100%;
-      background: rgba(12, 2, 2, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 13px;
-      padding: 13px 14px;
+      background-color: rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 12px;
+      padding: 12px;
       font-size: 0.84rem;
-      color: #d8c2c2;
+      color: #e2cccc;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      margin-bottom: 14px;
-      user-select: all;
+      margin-bottom: 12px;
     }
 
-    /* Botón verde COPIAR ENLACE AQUÍ */
     .btn-green-copy {
       width: 100%;
-      background: linear-gradient(180deg, #16b978 0%, #0ea568 100%);
+      background-color: #12b070;
+      background-image: linear-gradient(180deg, #16b978 0%, #0ea568 100%);
       color: #ffffff;
       border: none;
-      border-radius: 14px;
-      padding: 15px 16px;
-      font-family: inherit;
-      font-size: 0.92rem;
+      border-radius: 13px;
+      padding: 14px;
+      font-size: 0.9rem;
       font-weight: 700;
-      letter-spacing: 0.02em;
       text-transform: uppercase;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 8px 22px rgba(16, 185, 129, 0.3);
-      margin-bottom: 12px;
-      transition: transform 0.14s ease;
+      margin-bottom: 10px;
     }
 
-    .btn-green-copy:active {
-      transform: scale(0.97);
-    }
-
-    /* Botón rojo/carmesí INTENTAR ABRIR EN GOOGLE DE NUEVO (reemplazo del morado) */
     .btn-red-retry {
       width: 100%;
-      background: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%);
+      background-color: #c81e1e;
+      background-image: linear-gradient(90deg, #dc2626 0%, #b91c1c 100%);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 14px;
-      padding: 14px 16px;
-      font-family: inherit;
-      font-size: 0.88rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 13px;
+      padding: 13px;
+      font-size: 0.86rem;
       font-weight: 700;
-      line-height: 1.25;
-      letter-spacing: 0.02em;
       text-transform: uppercase;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      box-shadow: 0 8px 22px rgba(220, 38, 38, 0.35);
-      margin-bottom: 16px;
-      transition: transform 0.14s ease;
+      margin-bottom: 14px;
     }
 
-    .btn-red-retry:active {
-      transform: scale(0.97);
-    }
-
-    /* Caja inferior con los 3 pasos */
     .steps-box {
       width: 100%;
-      background: rgba(12, 2, 2, 0.55);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 14px 15px;
+      background-color: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 13px 14px;
       text-align: left;
-      font-size: 0.83rem;
-      line-height: 1.55;
-      color: #ebdada;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #f0e0e0;
     }
 
     .steps-box p {
       margin-bottom: 4px;
     }
 
-    .steps-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .steps-box strong {
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    /* MODAL DE REFERENCIAS */
+    /* Referencias deslizable */
     .ref-modal-box {
       width: 100%;
       max-width: 380px;
-      background: linear-gradient(180deg, #3b0808 0%, #240404 100%);
-      border: 1px solid rgba(255, 110, 110, 0.25);
+      background-color: #2c0505;
+      background-image: linear-gradient(180deg, #3e0808 0%, #220303 100%);
+      border: 1px solid rgba(255, 110, 110, 0.3);
       border-radius: 24px;
-      padding: 22px 18px;
-      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.85);
+      padding: 20px 16px 16px;
       text-align: left;
       color: #ffffff;
       position: relative;
-      animation: popUp 0.25s ease;
+      box-shadow: 0 22px 55px rgba(0, 0, 0, 0.85);
     }
 
-    .ref-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .ref-title {
-      font-size: 1.12rem;
-      font-weight: 700;
-    }
-
-    .ref-subtitle {
-      font-size: 0.86rem;
-      color: #e5cfcf;
-      margin-bottom: 14px;
+    .ref-badge-count {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffd6d6;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 50px;
+      margin-top: 6px;
     }
 
     .ref-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-height: 60vh;
+      max-height: 62vh;
       overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+      padding-right: 4px;
+      margin-top: 12px;
+    }
+
+    .ref-list::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .ref-list::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+    }
+
+    .ref-list::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.35);
+      border-radius: 10px;
     }
 
     .ref-card {
-      background: rgba(12, 2, 2, 0.55);
+      background-color: rgba(0, 0, 0, 0.48);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
-      padding: 13px;
+      border-radius: 13px;
+      padding: 12px;
+      flex-shrink: 0;
     }
 
-    .ref-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 5px;
-    }
-
-    .ref-name {
-      font-weight: 700;
-      font-size: 0.88rem;
-      color: #ffffff;
-    }
-
-    .ref-stars {
-      color: #facc15;
-      font-size: 0.8rem;
-    }
-
-    .ref-text {
-      font-size: 0.82rem;
-      color: #ebdada;
-      line-height: 1.42;
-      margin-bottom: 6px;
-    }
-
-    .ref-meta {
+    .ref-hint {
+      text-align: center;
       font-size: 0.72rem;
-      color: #4ade80;
-      font-weight: 600;
-    }
-
-    @keyframes floatLogo {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-5px); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes popUp {
-      from { opacity: 0; transform: scale(0.93); }
-      to { opacity: 1; transform: scale(1); }
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
 
-  <main class="container">
-    <!-- Ícono superior de mano y monedas verdes en círculo blanco -->
-    <div class="logo-circle" aria-hidden="true">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div class="container">
+    <div class="logo-circle">
+      <svg width="88" height="88" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="66" cy="23" r="7.5" fill="#46B81A"/>
         <text x="66" y="26.5" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="bold" font-size="10">$</text>
-        
         <circle cx="49" cy="37" r="10.5" fill="#46B81A"/>
         <text x="49" y="41.5" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="bold" font-size="13.5">$</text>
-        
         <circle cx="75" cy="42" r="13.5" fill="#46B81A"/>
         <text x="75" y="47.5" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-weight="bold" font-size="17.5">$</text>
-        
         <rect x="16" y="61" width="16" height="31" rx="2" fill="#46B81A"/>
         <circle cx="24" cy="84" r="2.8" fill="#FFFFFF"/>
-        
         <path d="M35 67C39 63 46 62 53 64L69 68C73 69 75 72 74 75C73 78 69 79 65 78L53 75C51.5 74.6 50.8 76.6 52.3 77.2L66 81C71 82 77 79 84 74L95 66C98.5 63.5 103.5 64.5 105.5 68C107.2 71 106 75 103 77.5L83 92C77 96.5 69.5 98 62 96.5L35 90V67Z" fill="#46B81A"/>
       </svg>
     </div>
 
-    <!-- Título exacto -->
-    <h1 class="title">
-      <span class="bolt">⚡</span> TIEMPO<br>
-      LIMITADO <span class="bolt">⚡</span>
-    </h1>
+    <h1 class="title">⚡ TIEMPO<br>LIMITADO ⚡</h1>
 
-    <!-- Texto exacto -->
     <p class="description">
       Solicita tu crédito sin ningún tipo de inicial o anticipado, Dale click al botón SOLICITAR, marca la cantidad que deseas y sigue los pasos. Al final recibirán en pantalla las opciones disponibles para pedir el crédito. ¡MUCHO ÉXITO!
     </p>
 
-    <!-- BOTÓN SOLICITAR -->
-    <button id="btnSolicitar" class="btn-solicitar" type="button">
-      SOLICITAR
-    </button>
-
-    <!-- BOTÓN REFERENCIAS DEBAJO DE SOLICITAR -->
-    <button id="btnReferencias" class="btn-referencias" type="button">
-      REFERENCIAS
-    </button>
-  </main>
+    <button id="btnSolicitar" class="btn-solicitar" type="button">SOLICITAR</button>
+    <button id="btnReferencias" class="btn-referencias" type="button">REFERENCIAS</button>
+  </div>
 
   <div class="footer-register">Register</div>
 
-  <!-- AVISO DE GOOGLE CHROME / SAFARI (ESTILO DE TU CAPTURA EN PALETA ROJA) -->
-  <div id="browserModal" class="modal-overlay" role="dialog" aria-modal="true">
+  <!-- AVISO GOOGLE CHROME / SAFARI -->
+  <div id="browserModal" class="modal-overlay">
     <div class="google-card">
-      <button class="google-close-btn" id="closeBrowserModal" aria-label="Cerrar">✕</button>
+      <button class="google-close-btn" id="closeBrowserModal" type="button">✕</button>
 
-      <div class="copied-pill" id="copiedPill">
-        <span class="copied-check">✓</span>
-        <span id="copiedPillText">¡Enlace copiado automáticamente!</span>
+      <div class="copied-pill">
+        <span id="copiedPillText">✅ ¡Enlace copiado automáticamente!</span>
       </div>
 
       <h2 class="google-title">Continúa en Google Chrome o Safari</h2>
@@ -507,13 +374,11 @@
       <div class="url-display-box" id="urlDisplay">https://o.uvixs.com</div>
 
       <button id="btnCopyUrl" class="btn-green-copy" type="button">
-        <span>📋</span>
-        <span id="btnCopyText">COPIAR ENLACE AQUÍ</span>
+        📋 <span id="btnCopyText">COPIAR ENLACE AQUÍ</span>
       </button>
 
       <button id="btnForceChrome" class="btn-red-retry" type="button">
-        <span>🌐</span>
-        <span>INTENTAR ABRIR EN GOOGLE DE NUEVO</span>
+        🌐 INTENTAR ABRIR EN GOOGLE DE NUEVO
       </button>
 
       <div class="steps-box">
@@ -524,156 +389,254 @@
     </div>
   </div>
 
-  <!-- MODAL DE REFERENCIAS -->
-  <div id="refModal" class="modal-overlay" role="dialog" aria-modal="true">
+  <!-- MODAL DE REFERENCIAS DESLIZABLE (18 RESEÑAS) -->
+  <div id="refModal" class="modal-overlay">
     <div class="ref-modal-box">
-      <div class="ref-header">
-        <div class="ref-title">⭐ Referencias de Clientes</div>
-        <button class="google-close-btn" style="position:static;" id="closeRefModal" aria-label="Cerrar">✕</button>
-      </div>
-      <p class="ref-subtitle">Experiencias de usuarios que ya completaron su solicitud:</p>
+      <button class="google-close-btn" id="closeRefModal" type="button">✕</button>
+      <h3 style="font-size:1.12rem; margin-bottom:4px;">⭐ Referencias de Clientes</h3>
+      <p style="font-size:0.82rem; color:#ead4d4;">Desliza hacia abajo para ver todas las opiniones:</p>
+      <span class="ref-badge-count">18 opiniones verificadas</span>
 
       <div class="ref-list">
         <div class="ref-card">
-          <div class="ref-top">
-            <span class="ref-name">Andrea Morales</span>
-            <span class="ref-stars">★★★★★</span>
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Andrea Morales</span>
+            <span style="color:#facc15;">★★★★★</span>
           </div>
-          <p class="ref-text">"Le di a solicitar, abrí en Google como decía y elegí el monto. No me pidieron ningún anticipo y sí me aprobaron."</p>
-          <div class="ref-meta">✓ Solicitud verificada • Hace 35 min</div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Le di a solicitar, abrí en Google como decía y elegí el monto. No me pidieron ningún anticipo y sí me aprobaron."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 12 min</span>
         </div>
 
         <div class="ref-card">
-          <div class="ref-top">
-            <span class="ref-name">Carlos Mendoza</span>
-            <span class="ref-stars">★★★★★</span>
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Carlos Mendoza</span>
+            <span style="color:#facc15;">★★★★★</span>
           </div>
-          <p class="ref-text">"Muy rápido todo el proceso desde el teléfono, al final te salen varias opciones para escoger la que mejor te convenga."</p>
-          <div class="ref-meta">✓ Solicitud verificada • Hoy</div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Muy rápido todo el proceso desde el teléfono, al final te salen varias opciones para escoger."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 28 min</span>
         </div>
 
         <div class="ref-card">
-          <div class="ref-top">
-            <span class="ref-name">Valeria Castro</span>
-            <span class="ref-stars">★★★★★</span>
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Valeria Castro</span>
+            <span style="color:#facc15;">★★★★★</span>
           </div>
-          <p class="ref-text">"Excelente, seguí los pasos tal cual y el mismo día recibí respuesta."</p>
-          <div class="ref-meta">✓ Solicitud verificada • Ayer</div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Excelente, seguí los pasos tal cual y el mismo día recibí respuesta."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 45 min</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Ricardo Herrera</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Al principio entré desde Messenger, copié el enlace como indicaba y en Chrome cargó súper rápido."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 1 hora</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Diana Salinas</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Me encantó que no piden dinero por adelantado. Elegí la cantidad que necesitaba sin vueltas."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 2 horas</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Eduardo Pineda</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Sencillo y directo, al terminar los pasos aparecen las opciones disponibles al instante."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 2 horas</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Patricia Guzmán</span>
+            <span style="color:#facc15;">★★★★☆</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Buen servicio, solo hay que leer bien los pasos al final para elegir la opción correcta."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 3 horas</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Miguel Ángel Torres</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Lo hice en mi descanso del trabajo en menos de 5 minutos. Muy recomendable."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 4 horas</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Gabriela Navarro</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Tenía dudas porque en otros lados me pedían inicial, aquí nada que ver, todo claro."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 5 horas</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Óscar Domínguez</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Pude marcar el monto que ocupaba y seguir las indicaciones sin problema alguno."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 6 horas</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Lucía Mendoza</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Muy práctico desde el celular, me gustó que te muestran las alternativas al final."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hoy</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Fernando Ríos</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Todo bien explicado, lo compartí con mi hermano porque también necesitaba apoyo rápido."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hoy</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Nayeli Contreras</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"El botón de copiar enlace me sacó de apuros cuando abrí el link desde Facebook."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Ayer</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Héctor Villalobos</span>
+            <span style="color:#facc15;">★★★★☆</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Buena experiencia en general, rápido de llenar y sin complicaciones."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Ayer</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Brenda Esquivel</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"¡Mucho éxito a todos! A mí me funcionó súper bien siguiendo cada paso."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Ayer</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Alejandro Cortés</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Sin anticipos ni letras chiquitas raras. Muy buen avance para quienes ocupan liquidez."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 2 días</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Karen Delgado</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Rápido, claro y directo al grano. Lo recomiendo bastante."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 2 días</span>
+        </div>
+
+        <div class="ref-card">
+          <div style="display:flex; justify-content:space-between; font-weight:700; font-size:0.88rem; margin-bottom:4px;">
+            <span>Sergio Maldonado</span>
+            <span style="color:#facc15;">★★★★★</span>
+          </div>
+          <p style="font-size:0.82rem; color:#f0e0e0; margin-bottom:5px;">"Entré en Chrome, elegí mi cantidad y al final vi las opciones disponibles sin problema."</p>
+          <span style="font-size:0.72rem; color:#4ade80; font-weight:600;">✓ Solicitud verificada • Hace 3 días</span>
         </div>
       </div>
+
+      <div class="ref-hint">↕ Desliza para leer todas las referencias</div>
     </div>
   </div>
 
   <script>
-    // ==================================================
-    // CAMBIA AQUÍ TU ENLACE DE DESTINO AL DARLE SOLICITAR
-    // ==================================================
-    const DESTINO_URL = "https://o.uvixs.com";
+    var DESTINO_URL = "https://o.uvixs.com";
 
-    // Mostrar automáticamente el enlace configurado dentro de la caja del modal
     document.getElementById("urlDisplay").textContent = DESTINO_URL;
 
-    // Función auxiliar para copiar el enlace al portapapeles
-    async function copiarEnlacePortapapeles() {
-      try {
-        await navigator.clipboard.writeText(DESTINO_URL);
-        return true;
-      } catch (e) {
-        const input = document.createElement("input");
+    function copiarEnlace() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(DESTINO_URL).catch(function() {});
+      } else {
+        var input = document.createElement("input");
         input.value = DESTINO_URL;
         document.body.appendChild(input);
         input.select();
         document.execCommand("copy");
         document.body.removeChild(input);
-        return true;
       }
     }
 
-    // Detecta navegador interno de Facebook, Messenger, Instagram o WhatsApp
-    function isFacebookOrMessenger() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera || "";
+    function esAppInterna() {
+      var ua = navigator.userAgent || navigator.vendor || "";
       return /FBAN|FBAV|FB_IAB|FBIOS|FB4A|Messenger|Instagram|WhatsApp/i.test(ua);
     }
 
-    function isAndroid() {
-      return /Android/i.test(navigator.userAgent || "");
-    }
+    function abrirEnGoogle(url) {
+      var sinProtocolo = url.replace(/^https?:\/\//, "");
+      copiarEnlace();
+      document.getElementById("browserModal").classList.add("active");
 
-    function salirAGoogle(urlDestino) {
-      const cleanUrl = urlDestino.replace(/^https?:\/\//, "");
-      const browserModal = document.getElementById("browserModal");
-
-      // Copia el enlace automáticamente al tocar SOLICITAR y muestra el aviso
-      copiarEnlacePortapapeles();
-      browserModal.classList.add("active");
-
-      if (isAndroid()) {
-        // Fuerza apertura directa en Google Chrome en Android
-        const intentUrl = `intent://${cleanUrl}#Intent;scheme=https;package=com.android.chrome;end;`;
-        window.location.href = intentUrl;
-
-        setTimeout(() => {
-          window.open(urlDestino, "_blank");
+      if (/Android/i.test(navigator.userAgent || "")) {
+        window.location.href = "intent://" + sinProtocolo + "#Intent;scheme=https;package=com.android.chrome;end;";
+        setTimeout(function() {
+          window.open(url, "_blank");
         }, 1200);
       } else {
-        // Intenta abrir en Google Chrome en iPhone (iOS)
-        const chromeIosUrl = `googlechromes://${cleanUrl}`;
-        window.location.href = chromeIosUrl;
-
-        setTimeout(() => {
-          window.location.href = urlDestino;
+        window.location.href = "googlechromes://" + sinProtocolo;
+        setTimeout(function() {
+          window.location.href = url;
         }, 900);
       }
     }
 
-    // Acción al presionar SOLICITAR
-    document.getElementById("btnSolicitar").addEventListener("click", () => {
-      if (isFacebookOrMessenger()) {
-        salirAGoogle(DESTINO_URL);
+    document.getElementById("btnSolicitar").onclick = function() {
+      if (esAppInterna()) {
+        abrirEnGoogle(DESTINO_URL);
       } else {
         window.location.href = DESTINO_URL;
       }
-    });
+    };
 
-    // Botón rojo: INTENTAR ABRIR EN GOOGLE DE NUEVO
-    document.getElementById("btnForceChrome").addEventListener("click", () => {
-      salirAGoogle(DESTINO_URL);
-    });
+    document.getElementById("btnForceChrome").onclick = function() {
+      abrirEnGoogle(DESTINO_URL);
+    };
 
-    // Botón verde: COPIAR ENLACE AQUÍ
-    document.getElementById("btnCopyUrl").addEventListener("click", async () => {
-      await copiarEnlacePortapapeles();
-      const btnText = document.getElementById("btnCopyText");
-      const pillText = document.getElementById("copiedPillText");
-      btnText.textContent = "¡ENLACE COPIADO!";
-      pillText.textContent = "¡Enlace copiado al portapapeles!";
+    document.getElementById("btnCopyUrl").onclick = function() {
+      copiarEnlace();
+      document.getElementById("btnCopyText").textContent = "¡ENLACE COPIADO!";
+      setTimeout(function() {
+        document.getElementById("btnCopyText").textContent = "COPIAR ENLACE AQUÍ";
+      }, 2500);
+    };
 
-      setTimeout(() => {
-        btnText.textContent = "COPIAR ENLACE AQUÍ";
-        pillText.textContent = "¡Enlace copiado automáticamente!";
-      }, 2800);
-    });
+    document.getElementById("btnReferencias").onclick = function() {
+      document.getElementById("refModal").classList.add("active");
+    };
 
-    // Control de Modales
-    const refModal = document.getElementById("refModal");
-    const browserModal = document.getElementById("browserModal");
+    document.getElementById("closeRefModal").onclick = function() {
+      document.getElementById("refModal").classList.remove("active");
+    };
 
-    document.getElementById("btnReferencias").addEventListener("click", () => {
-      refModal.classList.add("active");
-    });
-
-    document.getElementById("closeRefModal").addEventListener("click", () => {
-      refModal.classList.remove("active");
-    });
-
-    document.getElementById("closeBrowserModal").addEventListener("click", () => {
-      browserModal.classList.remove("active");
-    });
-
-    window.addEventListener("click", (e) => {
-      if (e.target === refModal) refModal.classList.remove("active");
-      if (e.target === browserModal) browserModal.classList.remove("active");
-    });
+    document.getElementById("closeBrowserModal").onclick = function() {
+      document.getElementById("browserModal").classList.remove("active");
+    };
   </script>
 </body>
 </html>
